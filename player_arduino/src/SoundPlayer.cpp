@@ -8,7 +8,7 @@ SoundPlayer::SoundPlayer( const uint8_t RX_pin, const uint8_t TX_pin ) : mp3( MD
 
 
 void SoundPlayer::play_folder( uint8_t folder ) {
-	mp3.playFolderRepeat( folder );
+	mp3.playSpecific( folder, 1 );
 }
 
 void SoundPlayer::begin() {
