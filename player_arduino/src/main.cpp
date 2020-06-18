@@ -24,8 +24,7 @@ MFRC522::MIFARE_Key key;
 void setup() {
 	Serial.begin( 57600 );
 	player.begin();
-	delay( 500 );
-	player.play_folder( 1 );
+	delay( 50 );
 
 	SPI.begin();
 	rfid.PCD_Init();
@@ -46,9 +45,7 @@ void loop() {
 	byte buffer[18];
 	rfid.MIFARE_Read((byte) 12, buffer, &buffer_size );
 	char folder_number = buffer[ 1 ];
-	Serial.print( folder_number < 0x10 ? "0" : "" );
-	Serial.println( folder_number, HEX );
-	Serial.println();
+	player.play_folder( folder_number );
 
 	delay( 2000 );
 }

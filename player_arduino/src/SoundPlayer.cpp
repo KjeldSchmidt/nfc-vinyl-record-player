@@ -8,14 +8,13 @@ SoundPlayer::SoundPlayer( const uint8_t RX_pin, const uint8_t TX_pin ) : mp3( MD
 
 
 void SoundPlayer::play_folder( uint8_t folder ) {
-	mp3.playFolderRepeat( 1 );
+	mp3.playFolderRepeat( folder );
 }
 
 void SoundPlayer::begin() {
 	mp3.begin();
 	mp3.setSynchronous( false );
 	mp3.setCallback( nullptr );
-	//mp3.volume( mp3.volumeMax());
 }
 
 bool SoundPlayer::check() {
