@@ -1,5 +1,5 @@
 .pio
 CMakeListsPrivate.txt
 cmake-build-*/ 
-.idea/workspace.xml
+*/.idea/*
 music/root/*
