@@ -32,8 +32,11 @@ bool SoundPlayer::check() {
 
 void SoundPlayer::handle_message() {
 	const MD_YX5300::cbData *status = mp3.getStatus();
+	Serial.print(F( "STS_??? 0x" ));
+	Serial.println( status->code, HEX );
 	switch ( status->code ) {
 		case MD_YX5300::STS_FILE_END:
+		case MD_YX5300::STS_VERSION: // Boldly attempt to ignore errors.
 			Serial.println( "Song done" );
 			play_next();
 			break;
@@ -41,10 +44,9 @@ void SoundPlayer::handle_message() {
 			Serial.println( "File Not Found" );
 			break;
 		default:
-			Serial.print(F( "STS_??? 0x" ));
-			Serial.println( status->code, HEX );
 			break;
 	}
+	Serial.println();
 }
 
 void SoundPlayer::play_current() {
