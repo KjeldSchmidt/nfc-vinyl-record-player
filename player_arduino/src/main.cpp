@@ -4,9 +4,6 @@
 #include <MFRC522.h>
 #include <SPI.h>
 
-#define RST_PIN 9
-#define SS_PIN 10
-
 /*
  * Wiring:
  *
@@ -30,19 +27,19 @@
  * IRQ - None
  */
 
-const uint8_t ARDUINO_RX = 4;    // connect to TX of MP3 Player module
-const uint8_t ARDUINO_TX = 5;    // connect to RX of MP3 Player module
+const uint8_t ARDUINO_RX = 4;
+const uint8_t ARDUINO_TX = 5;
 SoundPlayer player( ARDUINO_RX, ARDUINO_TX );
 
-bool bUseCallback = true; // use callbacks?
-bool bUseSynch = false;   // use synchronous?
-
-
+#define RST_PIN 9
+#define SS_PIN 10
 MFRC522 rfid{ SS_PIN, RST_PIN };
 
 MFRC522::MIFARE_Key key;
 
-#define NEW_UID {0xDE, 0xAD, 0xBE, 0xEF};
+
+byte buffer_size = 18;
+byte buffer[18];
 
 void setup() {
 	Serial.begin( 57600 );
@@ -64,8 +61,6 @@ void loop() {
 		return;
 	}
 
-	byte buffer_size = 18;
-	byte buffer[18];
 	rfid.MIFARE_Read((byte) 12, buffer, &buffer_size );
 	char folder_number = buffer[ 1 ];
 	player.play_folder( folder_number );
