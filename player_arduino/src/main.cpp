@@ -7,6 +7,29 @@
 #define RST_PIN 9
 #define SS_PIN 10
 
+/*
+ * Wiring:
+ *
+ * MD_YX5300 - Arduino
+ *
+ * TX - D4
+ * RX - D5
+ * VCC - 5v
+ * GND - GND
+ *
+ *
+ * MFRC522 - Arduino
+ *
+ * 3.3V - 3.3V
+ * GND - GND
+ * RST - D9
+ * SDA - D10
+ * MOSI - D11
+ * MISO - D12
+ * SCK - D13
+ * IRQ - None
+ */
+
 const uint8_t ARDUINO_RX = 4;    // connect to TX of MP3 Player module
 const uint8_t ARDUINO_TX = 5;    // connect to RX of MP3 Player module
 SoundPlayer player( ARDUINO_RX, ARDUINO_TX );
