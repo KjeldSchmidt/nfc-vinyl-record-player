@@ -1,0 +1,4 @@
+if (CMAKE_BUILD_TYPE MATCHES "nanoatmega328")
+    include_directories("${CMAKE_CURRENT_LIST_DIR}/.pio/libdeps/nanoatmega328/MD_YX5300_ID5592/src")
+    include_directories("${CMAKE_CURRENT_LIST_DIR}/.pio/libdeps/nanoatmega328/MFRC522_ID63/src")
+endif()
