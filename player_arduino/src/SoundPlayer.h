@@ -18,8 +18,16 @@ public:
 
 	bool check();
 
+	void play_next();
+
 private:
+	void handle_message();
+
+	void play_current();
+
 	MD_YX5300 mp3;
+	uint8_t current_file_index;
+	uint8_t current_folder_index;
 };
 
 

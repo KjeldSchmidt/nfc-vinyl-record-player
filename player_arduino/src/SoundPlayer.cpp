@@ -8,15 +8,45 @@ SoundPlayer::SoundPlayer( const uint8_t RX_pin, const uint8_t TX_pin ) : mp3( MD
 
 
 void SoundPlayer::play_folder( uint8_t folder ) {
-	mp3.playSpecific( folder, 1 );
+	current_folder_index = folder;
+	current_file_index = 1;
+	play_current();
+}
+
+void SoundPlayer::play_next() {
+	current_file_index++;
+	play_current();
 }
 
 void SoundPlayer::begin() {
 	mp3.begin();
-	mp3.setSynchronous( false );
+	mp3.setSynchronous( true );
 	mp3.setCallback( nullptr );
 }
 
 bool SoundPlayer::check() {
-	return mp3.check();
+	bool check = mp3.check();
+	if ( check ) handle_message();
+	return check;
+}
+
+void SoundPlayer::handle_message() {
+	const MD_YX5300::cbData *status = mp3.getStatus();
+	switch ( status->code ) {
+		case MD_YX5300::STS_FILE_END:
+			Serial.println( "Song done" );
+			play_next();
+			break;
+		case MD_YX5300::STS_ERR_FILE:
+			Serial.println( "File Not Found" );
+			break;
+		default:
+			Serial.print(F( "STS_??? 0x" ));
+			Serial.println( status->code, HEX );
+			break;
+	}
+}
+
+void SoundPlayer::play_current() {
+	mp3.playSpecific( current_folder_index, current_file_index );
 }
