@@ -25,6 +25,7 @@ Rough steps are:
 #### player-arduino
 
 This folder contains code for the actual end result. This can be loaded onto your arduino once the setup is done. Wiring is explained in `src/main.cpp`
+Like tag-writer, this project was developed using [PlatformIO](https://platformio.org/). You will need an [RFID library](https://github.com/miguelbalboa/rfid) and a (library for the music player)[https://github.com/MajicDesigns/MD_YX5300]. Both libraries are available through PlatformIO. I don't know if they are available in the Arduino IDE.
 
 #### tag-writer
 
