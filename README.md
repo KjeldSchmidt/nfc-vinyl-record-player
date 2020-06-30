@@ -3,7 +3,7 @@
 This Arduino project plays music, selected by using NFC tags. I don't have an LP record player, but I do have LP records - using this project, I can now "play" them.
 
 
-## Build Guide
+## I want to build this
 
 ### Components
 To build this, you will need an Arduino, an RFID tag reader/writer (mine is RC522 based) and a music player (YX5300), which can read files from a micro-SD and can be connected to normal speakers. This means: Three electrical components and some wires.
@@ -43,3 +43,10 @@ For giggles, I want scratchy noises when starting music. These can be found here
 
 Contains a prototype 3D-printable basic case for the electronic components. Not terribly pretty, but it hides the electronics well enough.
 
+## I want to improve this
+
+There are some improvements left to do in the current version. If the tag is placed in an awkward position, the music will start over and over again. There is currently no support for shuffling music, changing volume, pausing the music or skipping songs. If you implement any of these fixes or features, feel free to send me a pull request.
+
+## I have a question
+
+Please ask me anything you want to know, including request for help building this, via github or [e-mail](contact@kjeld-schmidt.com].
