@@ -49,4 +49,4 @@ There are some improvements left to do in the current version. If the tag is pla
 
 ## I have a question
 
-Please ask me anything you want to know, including request for help building this, via github or [e-mail](contact@kjeld-schmidt.com].
+Please ask me anything you want to know, including request for help building this, via github or [email](mailto:contact@kjeld-schmidt.com).
